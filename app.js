@@ -8,16 +8,15 @@ const config = require('./config/database');
 const users = require('./routes/users');
 
 // Database Conection
-mongoose.connect(config.database);
+mongoose.connect(config.database, (err) =>{
+  if(err) {
+    console.log('Database Error ' + err);
+  }
+});
 
 // Connection Successfull
 mongoose.connection.on('connected', () => {
   console.log('Connected to Database ' + config.database);
-});
-
-// Connection Error
-mongoose.connection.on('error', (err) => {
-  console.log('Database Error ' + err);
 });
 
 // Create App
@@ -35,6 +34,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Body Parse Middleware
 app.use(bodyParser.json());
 
+// Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+require('./config/passport')(passport);
 
 // User Route
 app.use('/users', users);

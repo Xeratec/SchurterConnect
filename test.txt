@@ -1,0 +1,14 @@
+## Schurter Connect API Test ##
+
+# Register
+curl -v -H "Content-Type:application/json" -X POST  http://localhost:3000/users/register -d '{"name":"Philip Wiese", "email":"philip.wiese@maketec.ch", "username":"xeratec", "password":"test"}' | python -m json.tool
+
+# Login
+curl -v -H "Content-Type:application/json" -X POST http://localhost:3000/users/authenticate -d '{"username":"xeratec", "password":"test"}' | python -m json.tool
+
+# Profile Unauthorized
+curl -v http://localhost:3000/users/profile
+
+# Profile Authorized
+curl -v -H "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyIkX18iOnsic3RyaWN0TW9kZSI6dHJ1ZSwic2VsZWN0ZWQiOnt9LCJnZXR0ZXJzIjp7fSwiX2lkIjoiNTk4OGE1ODQ2ODBmMzQxNDQ3N2JmNDQ4Iiwid2FzUG9wdWxhdGVkIjpmYWxzZSwiYWN0aXZlUGF0aHMiOnsicGF0aHMiOnsicGFzc3dvcmQiOiJpbml0IiwidXNlcm5hbWUiOiJpbml0IiwiZW1haWwiOiJpbml0IiwiX192IjoiaW5pdCIsIm5hbWUiOiJpbml0IiwiX2lkIjoiaW5pdCJ9LCJzdGF0ZXMiOnsiaWdub3JlIjp7fSwiZGVmYXVsdCI6e30sImluaXQiOnsiX192Ijp0cnVlLCJwYXNzd29yZCI6dHJ1ZSwidXNlcm5hbWUiOnRydWUsImVtYWlsIjp0cnVlLCJuYW1lIjp0cnVlLCJfaWQiOnRydWV9LCJtb2RpZnkiOnt9LCJyZXF1aXJlIjp7fX0sInN0YXRlTmFtZXMiOlsicmVxdWlyZSIsIm1vZGlmeSIsImluaXQiLCJkZWZhdWx0IiwiaWdub3JlIl19LCJwYXRoc1RvU2NvcGVzIjp7fSwiZW1pdHRlciI6eyJkb21haW4iOm51bGwsIl9ldmVudHMiOnt9LCJfZXZlbnRzQ291bnQiOjAsIl9tYXhMaXN0ZW5lcnMiOjB9fSwiaXNOZXciOmZhbHNlLCJfZG9jIjp7Il9fdiI6MCwicGFzc3dvcmQiOiIkMmEkMTAkeWUwS1AxaWtiVzRLaFlrLjBXTUViZWZzTGpEYVdNQld2TXBJVy5NTzZ0QjBqSG4wbGxjdkciLCJ1c2VybmFtZSI6InhlcmF0ZWMiLCJlbWFpbCI6InBoaWxpcC53aWVzZUBtYWtldGVjLmNoIiwibmFtZSI6IlBoaWxpcCBXaWVzZSIsIl9pZCI6IjU5ODhhNTg0NjgwZjM0MTQ0NzdiZjQ0OCJ9LCIkaW5pdCI6dHJ1ZSwiaWF0IjoxNTAyMTI4MTk0LCJleHAiOjE1MDI3MzI5OTR9.IRipbwcxcMOzRrG6eqInqNOHNQWVVanieLsxSg-XYKI" http://localhost:3000/users/profile
+
