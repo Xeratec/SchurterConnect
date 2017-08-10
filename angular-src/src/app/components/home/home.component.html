@@ -2,8 +2,8 @@
   <h1>Schurter Connect WebGUI</h1>
   <p class="lead">Wilkommen auf der Webapp von Schurter Connect</p>
   <div>
-    <a class="btn btn-primary" [routerLink]="['/register']">Register</a>
-    <a class="btn btn-primary" [routerLink]="['/login']">Login</a>
+    <a *ngIf="!authService.loggedIn()" class="btn btn-primary" [routerLink]="['/register']">Register</a>
+    <a *ngIf="!authService.loggedIn()" class="btn btn-primary" [routerLink]="['/login']">Login</a>
   </div>
 </div>
 
